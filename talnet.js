@@ -18,17 +18,21 @@ server.configure(function () {
 });
 
 //helpers
-var middlewareHelper = require('./app/helpers/middleware');
+//var middlewareHelper = require('./app/helpers/middleware');
+
+// Connections
+var databaseConnection = require('./app/connections/database.js');
 
 //Controllers
 var userController     = require('./app/controllers/user');
+
+userController(server, databaseConnection);
+
+
 
 server.get('/', function (req, res) {
     res.send('It works');
     //res.render('app/views/index.html');
 });
-
-
-userController(server);
 
 server.listen(3000);
