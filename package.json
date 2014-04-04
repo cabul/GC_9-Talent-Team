@@ -1,15 +1,16 @@
 {
-  "name": "Hookapp",
-  "subdomain": "hookapp",
+  "name": "Talnet",
+  "subdomain": "talnet",
   "scripts": {
-    "start": "node hookApp.js"
+    "start": "node talnet.js"
   },
-  "version": "0.0.1-15",
+  "version": "0.0.1",
   "dependencies": [
     "express.io",
     "express.io-middleware",
     "connect",
     "swig",
+    "mysql",
     "underscore"
   ],
   "bundleDependencies": [
@@ -17,6 +18,7 @@
     "express.io-middleware",
     "connect",
     "swig",
+    "mysql",
     "underscore"
   ],
   "engines": {

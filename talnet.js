@@ -24,7 +24,7 @@ var middlewareHelper = require('./app/helpers/middleware');
 var userController     = require('./app/controllers/user');
 
 server.get('/', function (req, res) {
-    res.send('Hookapp');
+    res.send('It works');
     //res.render('app/views/index.html');
 });
 
