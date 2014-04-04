@@ -1,0 +1,23 @@
+{
+  "name": "Hookapp",
+  "subdomain": "hookapp",
+  "scripts": {
+    "start": "node hookApp.js"
+  },
+  "version": "0.0.1-15",
+  "dependencies": [
+    "express.io",
+    "express.io-middleware",
+    "node-gcm",
+    "underscore"
+  ],
+  "bundleDependencies": [
+    "express.io",
+    "express.io-middleware",
+    "node-gcm",
+    "underscore"
+  ],
+  "engines": {
+    "node": "0.10.x"
+  }
+}

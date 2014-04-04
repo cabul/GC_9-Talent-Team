@@ -1,0 +1,7 @@
+#Archivos que uso en desarrollo para correr sobre ripple emulator chrome
+cordova.js
+cordova_plugins.js
+config.xml
+cordova.local.properties
+build/*
+cordova/*
