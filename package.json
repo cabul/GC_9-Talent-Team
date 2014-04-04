@@ -8,13 +8,15 @@
   "dependencies": [
     "express.io",
     "express.io-middleware",
-    "node-gcm",
+    "connect",
+    "swig",
     "underscore"
   ],
   "bundleDependencies": [
     "express.io",
     "express.io-middleware",
-    "node-gcm",
+    "connect",
+    "swig",
     "underscore"
   ],
   "engines": {

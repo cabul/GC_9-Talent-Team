@@ -1,13 +1,11 @@
 var express     = require('express.io'),
-    server      = express(),
-    gcm         = require('node-gcm');
+    server      = express();
 
 server.http().io();
 
 require('express.io-middleware')(server);
 
 // Configuracion para renderizar vistas
-server.engine('html', require('ejs').renderFile);
 server.set('view engine', 'html');
 server.set('views', './');
 
@@ -23,7 +21,7 @@ server.configure(function () {
 var middlewareHelper = require('./app/helpers/middleware');
 
 //Controllers
-var messageNotifierController     = require('./app/controllers/messageNotifier');
+var userController     = require('./app/controllers/user');
 
 server.get('/', function (req, res) {
     res.send('Hookapp');
@@ -31,10 +29,6 @@ server.get('/', function (req, res) {
 });
 
 
-gcmHelper.init(server, gcm);
-gpsController(server, gcmHelper, middlewareHelper);
-messageNotifierController(server, gcmHelper, middlewareHelper);
-updatesNotifierController(server, gcmHelper, middlewareHelper);
-adminActionNotifierController(server, gcmHelper, middlewareHelper);
+userController(server);
 
 server.listen(3000);
