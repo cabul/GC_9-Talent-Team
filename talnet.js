@@ -1,20 +1,25 @@
-var express     = require('express.io'),
-    server      = express();
+var express = require('express.io'),
+    server  = express(),
+    swig    = require('swig');
 
 server.http().io();
 
 require('express.io-middleware')(server);
 
 // Configuracion para renderizar vistas
+server.engine('html', swig.renderFile);
 server.set('view engine', 'html');
-server.set('views', './');
+server.set('views', __dirname + '/app/views');
+
+// Carga archivos estaticos
+//server.use(express.static(__dirname + '/public'));
 
 // Agregamos post, cookies y sesiones
 server.configure(function () {
     server.use(express.logger());
     server.use(express.cookieParser());
     server.use(express.bodyParser());
-    server.use('/', express.static(__dirname + '/app'));
+    server.use('/public', express.static(__dirname + '/public'));
 });
 
 //helpers

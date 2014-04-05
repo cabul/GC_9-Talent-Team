@@ -6,15 +6,27 @@ var userController = function (server, dbConnection) {
     	next();
 	};
 	/*************************GET****************************/
-	server.get('/talent/:talentWord/users', function (req, res) {
-		res.send(200);
-		/*Supervisor.find({ 'schools._id' : req.params.schoolId }, function (err, supervisors) {
-			if(err){
-				res.send(500, err);
-			}else{
-				res.send(200, supervisors);
-			}
+	server.get('/talent/:talentList/users', function (req, res) {
+		//dbConnection.connect();
+		
+		//connection.end();
+		var users = [
+			{ name : "Pepe" },
+			{ name : "Juan" },
+			{ name : "Pedro" },
+			{ name : "Alberto" },
+			{ name : "Aday" },
+			{ name : "Cristina" },
+			{ name : "Calvin" },
+			{ name : "Lewis" }
+		];
+		/*swig.renderFile('/app/views/users.html', {
+			users : users
 		});*/
+		//res.send(200);
+		res.render('users', {
+			users : users
+		});
 	});
 	/*************************POST****************************/
 	server.post('/getUsersByTalent', validParamsSendMessage, function (req, res) {
