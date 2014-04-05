@@ -7,25 +7,24 @@ var userController = function (server, db) {
 	};
 	/*************************GET****************************/
 	server.get('/talent/:talentList/users', function (req, res) {
-		var users = [
-			{ id : 1, name : "Pepe",    email : 'a@pepe.com', tel : '999', image : 'http://public/images/photo.jpg', info : 'Lorem ipsum dolor sit amet', contact : 'cualquier cosa' },
-			{ id : 2, name : "Juan",    email : 'a@Juan.com', tel : '999', image : 'http://public/images/photo.jpg', info : 'Lorem ipsum dolor sit amet', contact : 'cualquier cosa' },
-			{ id : 3, name : "Pedro",   email : 'a@Pedro.com', tel : '999', image : 'http://public/images/photo.jpg', info : 'Lorem ipsum dolor sit amet', contact : 'cualquier cosa' },
-			{ id : 4, name : "Alberto", email : 'a@Alberto.com', tel : '999', image : 'http://public/images/photo.jpg', info : 'Lorem ipsum dolor sit amet', contact : 'cualquier cosa' }
-		];
 		db.connect(function (err) {
 			if (err){
-				errorAbort(err);
+				res.send(500, err);
 		  		return;
 		  	}
-			var query = 'SELECT u.* ' +
+		  	var talentNames = (typeof(req.params.talentList) === 'string' && req.params.talentList !== '%20') ? req.params.talentList.split(" ") : [] ;
+			var queryString = 'SELECT DISTINCT u.* ' +
 						'FROM users u, talents t, user_talents ut ' +
-						'WHERE ((u.) AND () AND ())' +
-						'LIMIT 4';
-			db.connection.query(query, function (err, users, fields) {
-				debugger;
+						'WHERE (u.id = ut.user_id) AND (t.id = ut.talent_id)';
+			if(talentNames.length > 0) queryString += ' AND (';
+			talentNames.forEach(function (talent, index) {
+				if(index > 0) queryString += ' OR ';
+				queryString += '(LCASE(t.name) LIKE "%' + talent.toLowerCase() + '%")';
+			});
+			if(talentNames.length > 0) queryString += ')';
+			db.connection.query(queryString, function (err, users, fields) {
 			  	if (err){
-			  		errorAbort(err);
+			  		res.send(500, err);
 			  		return;
 			  	}
 			  	res.render('users', {
@@ -40,18 +39,37 @@ var userController = function (server, db) {
 				res.send(500, err);
 		  		return;
 		  	}
-			var query = 'SELECT * ' +
+			var query = 'SELECT id, name, image ' +
 						'FROM users ' +
 						'LIMIT 4';
 			db.connection.query(query, function (err, users, fields) {
-				debugger;
 			  	if (err){
 			  		res.send(500, err);
 			  		return;
 			  	}
-			  	res.render('home', {
-					users : users
-				});
+			  	var addTalentsToUser = function (userIndex, callBack) {
+			  		if(userIndex >= users.length){
+			  			callBack();
+			  		}else{
+			  			var talentQuery = 'SELECT t.name ' +
+										  'FROM users u, talents t, user_talents ut ' +
+										  'WHERE (u.id = ut.user_id) AND (t.id = ut.talent_id) AND (u.id = ' + users[userIndex].id + ') ' +
+										  'LIMIT 3';
+			  			db.connection.query(talentQuery, function (err, talents, fields) {
+			  				if (err){
+						  		res.send(500, err);
+						  		return;
+						  	}
+						  	users[userIndex].talents = talents;
+						  	addTalentsToUser((userIndex + 1), callBack);
+			  			});
+			  		}
+			  	};
+			  	addTalentsToUser(0, function () {
+			  		res.render('home', {
+						users : users
+					});
+			  	});
 			});
 		});
 	});
@@ -65,21 +83,31 @@ var userController = function (server, db) {
 			info    : 'Lorem ipsum dolor sit amet', 
 			contact : 'cualquier cosa' 
 		};
-		/*db.connect();
-		var query = 'SELECT name ' +
-					'FROM users';
-		connection.query(query, function (err, rows, fields) {
-		  	if (err){
-		  		res.send(500, err);
+		db.connect(function (err) {
+			if (err){
+				res.send(500, err);
 		  		return;
 		  	}
-		  	debugger;*/
-		  	res.render('profile', {
-				user : user
+		  	var talentNames = (typeof(req.params.talentList) === 'string' && req.params.talentList !== '%20') ? req.params.talentList.split(" ") : [] ;
+			var queryString = 'SELECT DISTINCT u.* ' +
+						'FROM users u, talents t, user_talents ut ' +
+						'WHERE (u.id = ut.user_id) AND (t.id = ut.talent_id)';
+			if(talentNames.length > 0) queryString += ' AND (';
+			talentNames.forEach(function (talent, index) {
+				if(index > 0) queryString += ' OR ';
+				queryString += '(LCASE(t.name) LIKE "%' + talent.toLowerCase() + '%")';
 			});
-		  	//console.log('The solution is: ', rows[0].solution);
-		/*});
-		db.end();*/
+			if(talentNames.length > 0) queryString += ')';
+			db.connection.query(queryString, function (err, users, fields) {
+			  	if (err){
+			  		res.send(500, err);
+			  		return;
+			  	}
+			  	res.render('profile', {
+					user : user
+				});
+			});
+		});
 	});
 	/*************************POST****************************/
 	server.post('/getUsersByTalent', validParamsSendMessage, function (req, res) {
