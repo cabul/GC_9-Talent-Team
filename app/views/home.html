@@ -5,14 +5,62 @@
 {% endblock %}
 
 {% block content %}
-	<h1>Usuarios</h1>
-		<ul>
-		{% for user in users %}
-		  <li{% if loop.first %} class="first"{% endif %}>
-		    <!-- {{ user.name }}
-		    {{ user.id }} -->
-		    {{ user.name }}
-		  </li>
-		{% endfor %}
-	</ul>
+<div class="wrapper">
+
+<header>
+
+    <div class="menu">
+        <a href="#">Registro</a>
+        <a class="loginBoton" href="#">Acceder</a>
+        
+    </div>
+
+</header>
+
+
+<div class="content">
+
+    <div class="mid">
+    	<center> <img src="/public/img/logo.png" />
+    
+    <form>
+    <input type="search" name="search" />
+    <input type="submit" value="Buscar" name="enviar" />
+    </form>
+    </center>
+    </div>
+
+</div>
+
+<footer>
+
+
+	
+    <div class="showcase">
+    	<ul>   
+    		{% for user in users %}
+				<li>
+				    <div onclick="location.href='/profile/" + {{user.id}} + "'"  class="view view-first">  
+						 <img src="/public/img/img.gif" />
+						 <h2>{{ user.name }}</h2> 
+						 <div class="mask">  
+						 {% for talent in user.talents %} 
+						 	<p>{{ talent.name }} </p> 
+						 {% endfor %}		       
+						 </div> 
+						 <a href="#" class="info">Read More</a> 
+					</div>      
+				</li>
+			{% endfor %}
+		</ul>
+    </div>
+    
+    
+    <div class="pie">
+           <a href="#">| ¿Quiénes somos?</a>
+           <a href="#">Contáctanos</a>
+    </div>
+
+</footer>
+</div>
 {% endblock %}
