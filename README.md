@@ -20,7 +20,7 @@ Ahora ya tienes el servidor corriendo
 Te vas a tu browser favorito y pones "localhost:3000" (sin las "")
 
 Consideraciones:
-- en la página web de node está mucha documentación sobre lo que permite y como se usa
+- en la página web de node hay mucha documentación acerca de lo que permite hacer y como se usa
 - lo mismo para github
 - a lo mejor hace falta configurar tu Firewall para que te deje acceder
 
