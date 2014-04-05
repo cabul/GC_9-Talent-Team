@@ -1,7 +1,10 @@
-HookApp
+Talnet
 =======
 
-Repositorio general para el proyecto HookApp del Hack4Good 2014
+Repositorio general para el proyecto Talnet del Hack4Good 2014
+
+Talnet es una plataforma online orientado a darle voz a personas con ganas de trabajar, formentar su experiencia y realizar proyectos.
+Le da un enfoque a los talentos, no a los curricula!
 
 Nuestro servidor está corriendo bajo node.js
 Se puede obtener de manera gratuita bajo: http://nodejs.org/
