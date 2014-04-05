@@ -1,4 +1,5 @@
-body > div > footer > div.showcase > ul {
+
+ul {
 	text-decoration:none;
 	list-style:none;
 }
@@ -30,23 +31,25 @@ header {
 }
 
 .logo img{
-	float:left;
-	margin-left:50px;
-	display:inline;
-	width:200px;
-	height:35px;
+  float: left;
+  margin-left: 50px;
+  display: inline;
+  width: 9%;
+  padding-top: 0.5em;
 }
 
 .content {
 	max-width:100%;
 	min-width:100%;
+  margin-top: 90px;
 }
 
 .content form input[type="search"] {
 	width:310px;
-	height:25px;
-	border:1px solid #9E9E9E; 
-	border-radius:1px;
+	height:33px;
+	border:1px solid #9E9E9E;
+
+	border-radius:6px;
 }
 
 .content form input[type="search"]:active, .content form input[type="search"]:focus {
@@ -56,10 +59,12 @@ header {
 
 .content form input[type="submit"] {
 	width:94px;
-	height:26px;
+	height:33px;
 	background-color:#313131;
 	color:#FFFFFF;
-	border:none;
+	border: 1px solid #313131;
+  border-radius:6px;
+  font-size: 14px;
 }
 
 .content .search {
@@ -71,17 +76,17 @@ header {
   margin: 0;
   padding: 0;
   display:inline;
+  height: 36px;
+  font-size: 18px;
 }
 .content .search form {
   display:inline; 
 }
 .content .search form input[type="search"] {
-  height:26px;
-  border-radius:1px;
-  border:1px solid #313131;
+  height        : 33px;
+  border        : 1px solid #9E9E9E;
+  border-radius : 6px;
 }
-
-
 .mid {
 	margin:0 auto;
   margin-top: 8em;
@@ -96,19 +101,28 @@ header {
 }
 
 .showcase {
-	height:219px;
-	background:url(../img/z.png) repeat-x;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+	background  : #BBBCAA;
+  position    : fixed;
+  width       : 100%;
+  height      : 235px;
+  bottom      : 0;
+  padding-top : 15px;
+}
+
+.showcaseSearch {
+  height           : auto;
+  background       : #BBBCAA;
+  position         : fixed;
+  width            : 100%;
+  bottom           : 1.9em;
 }
 
 .pie {
 	background-color:#313131;
 	height:30px;
   position: fixed;
-width: 100%;
-bottom: 0;
+  width: 100%;
+  bottom: 0;
 }
 
 .pie a{
@@ -132,9 +146,8 @@ footer {
 
 .imagen {
 	float:left;
-	display:inline;
-	margin-right:20px;
-	margin-top:35px;
+	margin-top:91px;
+  width: 19%;
 	
 }
 
@@ -143,17 +156,34 @@ footer {
 	width:150px;
 }
 
+.imagen ul {
+  list-style: none;
+  border: solid 1px red;
+  width: 150px;
+  margin: 0;
+  padding: 0;
+}
+
+.imagen li {
+  border: solid 1px blue;
+  padding: 0;
+  margin: 0;
+}
+
+.imagen li a {
+  width: 100%;
+  margin: 0 auto;
+  background: black;
+  line-height: 24px;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;s
+}
+
 .perfil {
-	display:inline;
-	margin-top:35px;
-}
-
-.feedback {
-	
-}
-
-.media {
-	
+  float: right;
+  width: 80%;
+	/*margin-top:35px;*/
 }
 
 /* Animacion */
@@ -169,7 +199,7 @@ footer {
     text-align: center;
     box-shadow: 1px 1px 2px #e6e6e6;
     cursor: default;
-    background: #fff url(img/img2.jpg) no-repeat 50% 0%;
+    /*background: #fff url(img/img2.jpg) no-repeat 50% 0%;*/
     background-size: cover;
     margin-left: 9%;
     cursor: pointer;
@@ -365,5 +395,67 @@ footer {
 .pie{
   font-family: verdana;
 }
-
-
+/*******/
+.profileSection{
+  margin: 0 auto;
+  width: 960px;
+}
+.BtnComparar{
+  float: right;
+  background-color: #727272;
+  padding: 10px;
+  margin-top: 10px;
+  text-decoration: none;
+  color: white;
+  font-family: verdana;
+}
+.BtnVolver{
+   /*float: left;*/
+   margin-top: 8px;
+}
+.score{
+  float: left;
+  display: inline-block;
+  padding-top: 3%;
+  background-color: #F2F1EF;
+  height: 67px;
+  margin-top: 42px;
+  margin-right: 11px;
+}
+.title{
+  position: relative;
+  bottom: 29px;
+  font-size: 10.2pt;
+}
+.title p{
+  background-color: black;
+  color: white;
+}
+.score h1{
+  text-align: center;
+  position: relative;
+  bottom: 19px;
+}
+.numericos{
+  width: 100%;
+  height: 147px;
+}
+.habilidadesDiv{
+  width: 100%;
+  height: 150px;
+}
+.numberPunt{
+  text-align: right;
+  background-color: #F2F1EF;
+  color: black;
+}
+.datosPuntuacion table{
+  border-collapse: collapse;
+}
+.imagen a{
+  text-decoration: none; 
+  padding: 9px;
+background-color: #c3c3c3;
+position: relative;
+top: 9px; 
+}

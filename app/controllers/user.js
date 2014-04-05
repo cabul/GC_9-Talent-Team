@@ -17,16 +17,37 @@ var userController = function (server, db) {
         queryString += '(LCASE(t.name) LIKE "%' + talent.toLowerCase() + '%")';
       });
       if(talentNames.length > 0) queryString += ')';
+      queryString += ' LIMIT 12';
       db.connection.query(queryString, function (err, users, fields) {
         if (err){
           res.send(500, err);
           return;
         }
-        res.render('users', {
-          users : users
+        var addTalentsToUser = function (userIndex, callBack) {
+          if(userIndex >= users.length){
+            callBack();
+          }else{
+            var talentQuery = 'SELECT t.name ' +
+                              'FROM users u, talents t, user_talents ut ' +
+                              'WHERE (u.id = ut.user_id) AND (t.id = ut.talent_id) AND (u.id = ' + users[userIndex].id + ') ' +
+                              'LIMIT 3';
+            db.connection.query(talentQuery, function (err, talents, fields) {
+              if (err){
+                res.send(500, err);
+                return;
+              }
+              users[userIndex].talents = talents;
+              addTalentsToUser((userIndex + 1), callBack);
+            });
+          }
+        };
+        addTalentsToUser(0, function () {
+          res.render('users', {
+            users : users
+          });
         });
       });
-      });
+    });
   });
   server.get('/home', function (req, res) {
     db.connect(function (err) {
@@ -50,14 +71,14 @@ var userController = function (server, db) {
                             'FROM users u, talents t, user_talents ut ' +
                             'WHERE (u.id = ut.user_id) AND (t.id = ut.talent_id) AND (u.id = ' + users[userIndex].id + ') ' +
                             'LIMIT 3';
-    db.connection.query(talentQuery, function (err, talents, fields) {
-      if (err){
-        res.send(500, err);
-        return;
-      }
-      users[userIndex].talents = talents;
-      addTalentsToUser((userIndex + 1), callBack);
-    });
+          db.connection.query(talentQuery, function (err, talents, fields) {
+            if (err){
+              res.send(500, err);
+              return;
+            }
+            users[userIndex].talents = talents;
+            addTalentsToUser((userIndex + 1), callBack);
+          });
         }
       };
       addTalentsToUser(0, function () {

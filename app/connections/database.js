@@ -14,10 +14,3 @@ var mysql        = require('mysql'),
 	};
 
 module.exports = dbConnection;
-
-/*host     : 'db522671399.db.1and1.com',
-	  database : 'db522671399',
-	  user     : 'dbo522671399',
-	  password : 'Hack4Good',
-	  port     : 3306
-	});*/
