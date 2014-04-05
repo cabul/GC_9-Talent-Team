@@ -5,12 +5,52 @@
 {% endblock %}
 
 {% block content %}
-	<h1>Lista de Usuarios</h1>
-		<ul>
-		{% for user in users %}
-		  <li{% if loop.first %} class="first"{% endif %}>
-		    {{ user.name }}
-		  </li>
-		{% endfor %}
-	</ul>
+	<div class="wrapper">
+
+<header>
+
+    <div class="menu">
+        <a href="#">Registro</a>
+        <a class="loginBoton" href="#">Acceder</a>
+        
+    </div>
+
+</header>
+
+
+<div class="content">
+
+    <div class="mid">
+    	<center> <img src="img/logo.png" />
+    
+    <form>
+    <input type="search" name="search" />
+    <input type="submit" value="Buscar" name="enviar" />
+    </form>
+    </center>
+    </div>
+
+</div>
+
+<footer>
+
+
+	
+    <div class="showcase">
+  
+    </div>
+    
+    
+    <div class="pie">
+           <a href="#">| ¿Quiénes somos?</a>
+           <a href="#">Contáctanos</a>
+    </div>
+
+</footer>
+
+
+
+
+
+</div>
 {% endblock %}
