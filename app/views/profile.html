@@ -4,151 +4,52 @@
 
 {% endblock %}
 
+{% block logo %}
+	<div class="logo">
+    	<a href="http://localhost:3000" /><img src="/public/img/blanco.png" /></a>
+    </div>
+{% endblock %}
+
 {% block content %}
 <div class="wrapper">
 
-<div class="content">
-	<a class="ProfileBtns BtnVolver" href="/home">< Volver</a>
-	<a class="ProfileBtns BtnComparar" href="#">Comparar</a>
+	<div class="content">
+		<a class="ProfileBtns BtnVolver" href="/home">< Volver</a>
+		<a class="ProfileBtns BtnComparar" href="#">Comparar</a>
 
-	<div class="ProfileMain">
-		
-		<img class="profile-pic" src="/public/img/img.gif"/>
+		<div class="ProfileMain">
+			
+			<img class="profile-pic" src="/public/img/img.gif"/>
 
-		<div class="ProfileName">{{user.name}}</div>
-		
-		<!-- <ul class="numericos">
-			<li><div class="score">45</div>
-				<div class="title">SEGUIDOERES</div>
-			</li>
-			<li><div class="score">61</div>
-				<div class="title">SIGUIENDO</div>
-			</li>
-			<li><div class="score">7.1</div>
-				<div class="title">NOTA MEDIA</div>
-			</li>
-		</ul> -->
+			<div class="ProfileName">{{user.name}}</div>
 
-		<img class="mock-score" src="/public/img/score.png"/>
+			<img class="mock-score" src="/public/img/score.png"/>
 
-		<a class="ProfileBtns BtnContactar" href="#">Contactar</a>
-		<a class="ProfileBtns BtnSeguir" href="#">Seguir</a>
-		<div class="Habilidades-wrapper">
-			<p>HABILIDADES</p>
-			<ul>
-			{% for talent in user.talents %}
-				<li>
-				<div class="hab-name"> {{talent.name}} </div>
-				<!--<div class="hab-info"> {{talent.info}} </div>-->
-				</li>
-			{% endfor %}
-			</ul>
-			</ul>
+			<a class="ProfileBtns BtnContactar" href="#">Contactar</a>
+			<a class="ProfileBtns BtnSeguir" href="#">Seguir</a>
+			<div class="Habilidades-wrapper">
+				<p>HABILIDADES</p>
+				<ul>
+					{% for talent in user.talents %}
+						<li>
+							<div class="hab-name"> {{talent.name}} </div>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+
+
+		<div class="mock-rest">
+			<img src="/public/img/mock.png"/>
 		</div>
-
-
-	<div class="mock-rest">
-		<img src="/public/img/mock.png"/>
 	</div>
-</div>
+	<footer>
+	    <div class="pie">
+	           <a href="#">| ¿Quiénes somos?</a>
+	           <a href="#">Contáctanos</a>
+	    </div>
 
-
-<!-- 
-    <div class="box">
-    	<a class="BtnVolver" href="#">< Volver</a>
-    	<a class="BtnComparar" href="#">COMPARAR</a>
-    
-        <div class="imagen">
-        	<img src="../try.jpg" />
-        	<ul>
-        		<li class="BtnImg BtnContactar"><a href="">Contactar</a></li>
-        		<li class="BtnImg BtnSeguir"><a href="">Seguir</a></li>
-        	
-        	</ul>
-        </div>
-        
-        
-        <div class="perfil">
-        	<div class="numericos">
-		        	<div class="score">
-		            <h1>45</h1>
-		            	<div class="title">
-		                <p> SEGUIDORES</p>
-		                </div>
-		            </div>
-		            
-		            <div class="score">
-		            <h1>61</h1>
-		            	<div class="title">
-		                <p>SIGUIENDO</p>
-		                </div>
-		            </div>
-		            <div class="score">
-		            <h1>7.1</h1>
-		            	<div class="title">
-		                <p>NOTA MEDIA</p>
-		                </div>
-		            </div>
-		        </div>
-    
-            <br/>
-        	<div class="habilidadesDiv">
-	            <h3> Habilidades </h3>
-	            <p> Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet sit amet </p>
-	            <p>Lorem ipsum dolor sit amet sit amet Lorem ipsum dolor sit amet sit amet Lorem ipsum dolor sit amet</p>
-            </div>
-        </div>
-    
-    <div class="puntuacion">
-    	<div class="titlePuntuacion"></div>
-    	<div class="datosPuntuacion">
-    	 <table>
-			<tr>
-				<th style="background-color: black; color:white;"></th>
-				<th style="background-color: black; color:white;">Puntuación.</th>
-			</tr>
-			<tr>
-				<td style=" background-color: #F2F1EF;color: black;">LorepIsum</td>
-				<td class="numberPunt">29</td>
-			</tr>
-			<tr>
-				<td style=" background-color: #F2F1EF;color: black;">LorepIsum</td>
-				<td class="numberPunt">29</td>
-			</tr>
-						<tr>
-				<td style=" background-color: #F2F1EF;color: black;">LorepIsum</td>
-				<td class="numberPunt">29</td>
-			</tr>
-						<tr>
-				<td style=" background-color: #F2F1EF;color: black;">LorepIsum</td>
-				<td class="numberPunt">29</td>
-			</tr>
-						<tr>
-				<td style=" background-color: #F2F1EF;color: black;">LorepIsum</td>
-				<td class="numberPunt">29</td>
-			</tr>
-    	 </table>
-    	</div>
-    	
-    </div>
-     
-    <div class="publicidad">   
-        
-    </div>
-
- -->    
-    
-</div>
-
-<footer>
-    <div class="pie">
-           <a href="#">| ¿Quiénes somos?</a>
-           <a href="#">Contáctanos</a>
-    </div>
-
-</footer>
-
-
+	</footer>
 </div>
 
 {% endblock %}

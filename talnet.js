@@ -11,19 +11,13 @@ server.engine('html', swig.renderFile);
 server.set('view engine', 'html');
 server.set('views', __dirname + '/app/views');
 
-// Carga archivos estaticos
-//server.use(express.static(__dirname + '/public'));
-
 // Agregamos post, cookies y sesiones
 server.configure(function () {
     server.use(express.logger());
     server.use(express.cookieParser());
     server.use(express.bodyParser());
-    server.use('/public', express.static(__dirname + '/public'));
+    server.use('/public', express.static(__dirname + '/public'));// Carga archivos estaticos
 });
-
-//helpers
-//var middlewareHelper = require('./app/helpers/middleware');
 
 // Connections
 var databaseConnection = require('./app/connections/database.js');
@@ -32,8 +26,6 @@ var databaseConnection = require('./app/connections/database.js');
 var userController     = require('./app/controllers/user');
 
 userController(server, databaseConnection);
-
-
 
 server.get('/', function (req, res) {
     res.redirect('/home');
