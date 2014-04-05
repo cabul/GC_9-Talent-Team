@@ -36,9 +36,7 @@ userController(server, databaseConnection);
 
 
 server.get('/', function (req, res) {
-    //res.send('It works');
     res.redirect('/home');
-    //res.render('app/views/index.html');
 });
 
 server.listen(3000);
