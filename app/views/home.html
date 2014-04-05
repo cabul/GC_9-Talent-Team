@@ -41,7 +41,7 @@
     	<ul>   
     		{% for user in users %}
 				<li>
-				    <div onclick="location.href='/profile/" + {{user.id}} + "'"  class="view view-first">  
+						<div onclick="location.href = '/profile/{{user.id}}'"  class="view view-first">  
 						 <img src="/public/img/img.gif" />
 						 <h2>{{ user.name }}</h2> 
 						 <div class="mask">  
@@ -50,7 +50,8 @@
 						 {% endfor %}		       
 						 </div> 
 						 <a href="#" class="info">Read More</a> 
-					</div>      
+						</div>      
+					
 				</li>
 			{% endfor %}
 		</ul>
