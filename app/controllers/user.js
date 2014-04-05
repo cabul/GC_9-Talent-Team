@@ -39,7 +39,7 @@ var userController = function (server, db) {
 				res.send(500, err);
 		  		return;
 		  	}
-			var query = 'SELECT * ' +
+			var query = 'SELECT id, name, image ' +
 						'FROM users ' +
 						'LIMIT 4';
 			db.connection.query(query, function (err, users, fields) {
@@ -47,9 +47,29 @@ var userController = function (server, db) {
 			  		res.send(500, err);
 			  		return;
 			  	}
-			  	res.render('home', {
-					users : users
-				});
+			  	var addTalentsToUser = function (userIndex, callBack) {
+			  		if(userIndex >= users.length){
+			  			callBack();
+			  		}else{
+			  			var talentQuery = 'SELECT t.name ' +
+										  'FROM users u, talents t, user_talents ut ' +
+										  'WHERE (u.id = ut.user_id) AND (t.id = ut.talent_id) AND (u.id = ' + users[userIndex].id + ') ' +
+										  'LIMIT 3';
+			  			db.connection.query(talentQuery, function (err, talents, fields) {
+			  				if (err){
+						  		res.send(500, err);
+						  		return;
+						  	}
+						  	users[userIndex].talents = talents;
+						  	addTalentsToUser((userIndex + 1), callBack);
+			  			});
+			  		}
+			  	};
+			  	addTalentsToUser(0, function () {
+			  		res.render('home', {
+						users : users
+					});
+			  	});
 			});
 		});
 	});
