@@ -62,6 +62,25 @@ header {
 	border:none;
 }
 
+.content .search {
+  margin:0 auto;
+  max-width:960px;
+}
+
+.content .search h3 {
+  margin: 0;
+  padding: 0;
+  display:inline;
+}
+.content .search form {
+  display:inline; 
+}
+.content .search form input[type="search"] {
+  height:26px;
+  border-radius:1px;
+  border:1px solid #313131;
+}
+
 
 .mid {
 	margin:0 auto;
