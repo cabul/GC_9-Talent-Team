@@ -1,10 +1,5 @@
 var userController = function (server, db) {
   console.log('userController loaded');
-  /***********************Action Codes**********************/
-  /***********************MIDDLEWARES***********************/
-  var validParamsSendMessage = function (req, res, next) {
-    next();
-  };
   /*************************GET****************************/
   server.get('/talent/:talentList/users', function (req, res) {
     db.connect(function (err) {
@@ -109,10 +104,6 @@ var userController = function (server, db) {
         });
       });
     });
-  });
-  /*************************POST****************************/
-  server.post('/getUsersByTalent', validParamsSendMessage, function (req, res) {
-    res.send(200);
   });
 };
 
