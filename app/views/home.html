@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+	<h1>Usuarios</h1>
+		<ul>
+		{% for user in users %}
+		  <li{% if loop.first %} class="first"{% endif %}>
+		    {{ user.name }}
+		  </li>
+		{% endfor %}
+	</ul>
+{% endblock %}
