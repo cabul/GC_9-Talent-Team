@@ -1,14 +1,16 @@
 create table if not exists users(
   id int(10) not null auto_increment,
-  email varchar(50) not null,
+  email varchar(50),
+  tel varchar(20),
   name varchar(100) not null,
   info varchar(500),
   contact varchar(500),
   image varchar(100),
-  created date,
-  updated date,
+  created timestamp not null default current_timestamp,
+  updated timestamp not null,
   constraint users_pk primary key(id),
-  constraint users_uk unique key(email)
+  constraint users_email_uk unique key(email),
+  constraint users_tel_uk unique key(tel)
 );
 
 create table if not exists talents (
@@ -27,10 +29,10 @@ create table if not exists dialogs (
   client_name varchar(100) not null,
   client_email varchar(50) not null,
   client_contact varchar(500),
+  created timestamp not null default current_timestamp,
+  updated timestamp not null,
   user_id int(10) not null,
-  created date not null,
-  updated date not null,
-  constraint dialog_pk primary key(id)
+  constraint dialogs_pk primary key(id)
 );
 
 create table if not exists user_talents (
@@ -52,7 +54,7 @@ create table if not exists dialog_talents (
 create table if not exists messages (
   id int(10) not null auto_increment,
   content varchar(500) not null,
-  date date not null,
+  date timestamp not null default current_timestamp,
   is_admin bool not null,
   dialog_id int(10) not null,
   constraint messages_pk primary key(id),

@@ -9,7 +9,7 @@
 		<ul>
 		{% for user in users %}
 		  <li{% if loop.first %} class="first"{% endif %}>
-		    {{ user.name }}
+		    {{ user.email }}
 		  </li>
 		{% endfor %}
 	</ul>
