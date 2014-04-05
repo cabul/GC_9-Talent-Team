@@ -5,24 +5,55 @@
 {% endblock %}
 
 {% block content %}
-	<h1>{{ user.name }}</h1>
 <div class="wrapper">
-    <header>
-    
-        <div class="logo">
-        	<img src="/public/img/blanco.png" />
-        </div>
-        
-        <div class="menu">
-        	<a href="#">Registro</a>
-        	<a class="loginBoton" href="#">Acceder</a>
-        	
-        </div>
-    
-    </header>
 
 <div class="content">
+	<a class="ProfileBtns BtnVolver" href="/home">< Volver</a>
+	<a class="ProfileBtns BtnComparar" href="#">Comparar</a>
 
+	<div class="ProfileMain">
+		
+		<img class="profile-pic" src="/public/img/img.gif"/>
+
+		<div class="ProfileName">{{user.name}}</div>
+		
+		<!-- <ul class="numericos">
+			<li><div class="score">45</div>
+				<div class="title">SEGUIDOERES</div>
+			</li>
+			<li><div class="score">61</div>
+				<div class="title">SIGUIENDO</div>
+			</li>
+			<li><div class="score">7.1</div>
+				<div class="title">NOTA MEDIA</div>
+			</li>
+		</ul> -->
+
+		<img class="mock-score" src="/public/img/score.png"/>
+
+		<a class="ProfileBtns BtnContactar" href="#">Contactar</a>
+		<a class="ProfileBtns BtnSeguir" href="#">Seguir</a>
+		<div class="Habilidades-wrapper">
+			<p>HABILIDADES</p>
+			<ul>
+			{% for talent in user.talents %}
+				<li>
+				<div class="hab-name"> {{talent.name}} </div>
+				<!--<div class="hab-info"> {{talent.info}} </div>-->
+				</li>
+			{% endfor %}
+			</ul>
+			</ul>
+		</div>
+
+
+	<div class="mock-rest">
+		<img src="/public/img/mock.png"/>
+	</div>
+</div>
+
+
+<!-- 
     <div class="box">
     	<a class="BtnVolver" href="#">< Volver</a>
     	<a class="BtnComparar" href="#">COMPARAR</a>
@@ -105,9 +136,18 @@
         
     </div>
 
-    
+ -->    
     
 </div>
+
+<footer>
+    <div class="pie">
+           <a href="#">| ¿Quiénes somos?</a>
+           <a href="#">Contáctanos</a>
+    </div>
+
+</footer>
+
 
 </div>
 

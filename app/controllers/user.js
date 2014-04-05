@@ -87,7 +87,7 @@ var userController = function (server, db) {
           return; 
         }
         var user = users[0],
-            talentQuery = 'SELECT t.name ' +
+            talentQuery = 'SELECT t.name, t.info ' +
                           'FROM talents t, user_talents ut ' +
                           'WHERE (ut.user_id = ' + user.id + ') AND (t.id = ut.talent_id) ' +
                           'LIMIT 9'
