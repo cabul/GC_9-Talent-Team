@@ -43,7 +43,8 @@ var userController = function (server, db) {
         };
         addTalentsToUser(0, function () {
           res.render('users', {
-            users : users
+            users     : users,
+            haveUsers : (users) ? (users.length > 0) : false
           });
         });
       });
